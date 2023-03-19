@@ -13,7 +13,10 @@ class MonobankWebhook(BaseModel):
     data: dict
 
 
-router = APIRouter(prefix="/monobank", tags=["monobank"])
+router = APIRouter(
+    prefix=f"/monobank/{settings.monobank_path_token}",
+    tags=["monobank"],
+)
 
 
 @router.get("/", status_code=200)
