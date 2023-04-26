@@ -36,10 +36,7 @@ router = APIRouter(prefix="/telegram", tags=["telegram"])
 @router.post("/")
 async def process_telegram_webhook(
     update: TelegramUpdate,
-    x_telegram_bot_api_secret_token: str
-    | None = Header(
-        default=None
-    ),  # TODO: use typing.Annotated when it's fixed
+    x_telegram_bot_api_secret_token: str | None = Header(default=None),
 ) -> None:
     if x_telegram_bot_api_secret_token != settings.telegram_header_token:
         raise HTTPException(

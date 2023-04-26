@@ -19,6 +19,7 @@ RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 CMD [ \
     "gunicorn", \
     "--bind", "0.0.0.0:80", \
+    "--access-logfile", "-", \
     "--workers", "4", \
     "--worker-class", "uvicorn.workers.UvicornH11Worker", \
     "monobank_webhooks_bot.main:app"\
